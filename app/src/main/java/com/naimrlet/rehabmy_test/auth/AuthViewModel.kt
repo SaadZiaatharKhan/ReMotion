@@ -10,15 +10,13 @@ import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.FirebaseAuthInvalidUserException
 import com.google.firebase.auth.FirebaseAuthUserCollisionException
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.ktx.Firebase
+import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 
 class AuthViewModel : ViewModel() {
-    private val auth: FirebaseAuth = Firebase.auth
-    private val firestore = Firebase.firestore
+    private val auth: FirebaseAuth = FirebaseAuth.getInstance()
+    private val firestore = FirebaseFirestore.getInstance()
 
     var isAuthenticated by mutableStateOf(auth.currentUser != null)
         private set
